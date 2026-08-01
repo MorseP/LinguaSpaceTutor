@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Марго
+    </a>
+
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Марго</a></li>
+        <li><a class="dropdown-item" href="#">Айдан</a></li>
+        <li><a class="dropdown-item" href="#">Софія</a></li>
+        <li><a class="dropdown-item" href="#">Ірина</a></li>
+    </ul>
+</div>
+
+<div class="container text-center" border="1px Solid">
+    <div class="row">
+        <div class="col">day/time</div>
+        {% for date in dates %}
+            <div class="col">{{date.day}}<br />{{date.count}}</div> 
+        {% endfor %}
+    </div>
+    {% for time in times %}
+    <div class="row">
+        <div class="col">{{time.hour}}</div>
+        {% for date in dates %}
+        <div class="col" style="cursor:pointer"><a href="/add?time={{time.hour}}&date={{date.count}}">zzz</a></div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
