@@ -1,35 +1,59 @@
-{% extends "layout.html" %}
+{% extends "head.html" %}
 
 {% block content %}
 
+{% if role == "admin" %}
 <div class="dropdown">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Марго
+        {% for tutor in tutors %}
+            {% if tutor.active == 'true' %}
+        {{tutor.name}}
+            {% endif %}
+        {% endfor %}
     </a>
 
     <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Марго</a></li>
-        <li><a class="dropdown-item" href="#">Айдан</a></li>
-        <li><a class="dropdown-item" href="#">Софія</a></li>
-        <li><a class="dropdown-item" href="#">Ірина</a></li>
+        {% for tutor in tutors %}
+        <li><a class="dropdown-item" href="/?t={{tutor.id}}">{{tutor.name}}</a></li>
+        {% endfor %}
     </ul>
 </div>
-
-<div class="container text-center" border="1px Solid">
-    <div class="row">
-        <div class="col">day/time</div>
-        {% for date in dates %}
-            <div class="col">{{date.day}}<br />{{date.count}}</div> 
-        {% endfor %}
-    </div>
-    {% for time in times %}
-    <div class="row">
-        <div class="col">{{time.hour}}</div>
-        {% for date in dates %}
-        <div class="col" style="cursor:pointer"><a href="/add?time={{time.hour}}&date={{date.count}}">zzz</a></div>
-        {% endfor %}
-    </div>
-    {% endfor %}
+{% else %}
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">    
+        {{name}}
+    </a>
 </div>
-
+{% endif %}
+<div class="table">
+    <div class="text-center" border="1px Solid">
+        <div class="row">
+            <div class="col">day/time</div>
+            {% for date in dates %}
+                <div class="col">{{date.day}}<br />{{date.count}}</div> 
+            {% endfor %}
+        </div>
+        {% for time in times %}
+        <div class="row">
+            <div class="col">{{time.hour}}</div>
+            {% for date in dates %}
+            <a href="/add?t={{active_tut}}&time={{time.hour}}&date={{date.count}}" class="col">
+                <div class="col" style="cursor:pointer; border:none">
+                    {% for resul in ress %}
+                    {% if resul.hour == time.hour and resul.date == date.day %}
+                        {% if not resul.allow %}
+                            <p>{{resul.time}} <p style="color:red">Запис заблоковано! </p>
+                        {% else %}    
+                            {{resul.time}}<p>{{resul.student}}<p>
+                            {{resul.comm}}</p>
+                        {% endif %}
+                    {% endif %}
+               {% endfor %}
+               </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

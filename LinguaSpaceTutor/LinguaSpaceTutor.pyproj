@@ -28,6 +28,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="LinguaSpaceTutor\dbModule.py" />
     <Compile Include="runserver.py" />
     <Compile Include="LinguaSpaceTutor\__init__.py" />
     <Compile Include="LinguaSpaceTutor\views.py" />
@@ -36,11 +37,14 @@
     <Folder Include="LinguaSpaceTutor\" />
     <Folder Include="LinguaSpaceTutor\static\" />
     <Folder Include="LinguaSpaceTutor\static\content\" />
+    <Folder Include="LinguaSpaceTutor\static\content\pic\" />
     <Folder Include="LinguaSpaceTutor\static\fonts\" />
     <Folder Include="LinguaSpaceTutor\static\scripts\" />
     <Folder Include="LinguaSpaceTutor\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LinguaSpaceTutor\static\content\pic\logo.png" />
+    <Content Include="LinguaSpaceTutor\templates\add.html" />
     <Content Include="requirements.txt" />
     <Content Include="LinguaSpaceTutor\static\content\bootstrap.css" />
     <Content Include="LinguaSpaceTutor\static\content\bootstrap.min.css" />

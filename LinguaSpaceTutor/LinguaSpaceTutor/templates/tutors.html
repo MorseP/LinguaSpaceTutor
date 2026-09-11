@@ -1,0 +1,23 @@
+﻿{% extends "head.html" %}
+
+{% block content %}
+<div class="content">
+    <div class="container text-center" border="1px Solid">
+        <div class="row">
+            <div class="col">Ім'я</div>
+            <div class="col">Контакти</div>
+            <div class="col">Роль</div>
+        </div>
+        {% for t in tu %}
+        <div class="row">
+            <div class="col">{{t.userlastname}}</div>
+            <div class="col">{{t.email}}</div>
+            <div class="col">{{t.role}}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {{message}}
+</div>
+
+
+{% endblock %}

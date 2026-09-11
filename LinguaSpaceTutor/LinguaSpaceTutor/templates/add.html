@@ -1,8 +1,42 @@
-﻿{% extends "layout.html" %}
+﻿{% extends "head.html" %}
 
 {% block content %}
 
-{{time}} <br />
-{{date}}
+{% for tutor in tutors %}
+    {% if tutor.active == 'true' %}
+    <p>Викладач : {{tutor.name}}</p>
+    {% endif %}
+{% endfor %}
+    <div class="table">
+        <form action="" method="POST">
+            <label for="subscribe">Закрити запис на цей час</label>
+            <input type="checkbox" name="block" class="chbk"
+                   {% if not dis %}
+                   checked
+                   {% endif %} />
+            <label for="date">Дата/Час:</label>
+            <input name="date" type="datetime-local" value="{{date}}" class="form-control" />
+            {% if not dis or role == "tutor" %}
+            <fieldset disabled>
+                {% endif %}
+                <p></p>
+
+                <label for="student">Учень:</label>
+                <select name="student" class="form-control">
+                    {% for student in students %}
+                    <option value="{{student.id}}">{{student.stname}}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="comment">Коментар:</label>
+                <input id="comment" name="message" rows="4" cols="50" class="form-control" value="{{comment}}" />
+                {% if not dis or role == "tutor" %}
+            </fieldset>
+            {% endif %}
+            <button type="submit" class="btn btn-primary rounded-pill px-3">Записати</button>
+
+        </form>
+    </div>
+<a href="/home?t={{tut}}">Повернутись</a>
 
 {% endblock %}

@@ -1,0 +1,29 @@
+﻿{% extends "head.html" %}
+
+{% block content %}
+<div class="content">
+    {% if role == "admin" %}
+    <a href="/stadd">Додати учня</a>
+    {% endif %}
+    <div class="container text-center" border="1px Solid">
+        <div class="row">
+            <div class="col">Ім'я</div>
+            <div class="col">Контакти</div>
+            <div class="col">Вивчаєма мова</div>
+            <div class="col">Вчитель</div>
+        </div>
+        {% for re in ress %}
+        <div class="row">
+            <div class="col">{{re.stname}}</div>
+            <div class="col">{{re.stcontact}}</div>
+            <div class="col">{{re.stlang}}</div>
+            <div class="col">{{re.teacher}}</div>
+            {% if role == "admin" %}
+                <div class="col"><a href="/stud?rem={{re.stid}}">Видалити</a></div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {{message}}
+</div>
+ {% endblock %}

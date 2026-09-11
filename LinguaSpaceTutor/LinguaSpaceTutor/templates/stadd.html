@@ -1,0 +1,26 @@
+﻿{% extends "head.html" %}
+
+{% block content %}
+<div class="content">
+    <form action="" method="POST">
+        <label>Ім'я</label>
+        <input id="stname" name="stname" class="form-control" />
+        <label>Контакт</label>
+        <input id="stcontact" name="stcontact" class="form-control" />
+        <label>Вивчаєма мова</label>
+        <select id="stlang" name="stlang" class="form-control" />
+        {% for lang in langu %}
+        <option value="{{lang.name}}">{{lang.name}}</option>
+        {% endfor %}
+        </select>
+        <label>Викладач</label>
+        <select id="stteacher" name="stteacher" class="form-control" />
+        {% for tu in tut %}
+        <option value="{{tu.id}}">{{tu.name}}</option>
+        {% endfor %}
+        </select>
+        <p>
+            <button type="submit">Додати</button>
+    </form>
+</div>
+{% endblock%}

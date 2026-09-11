@@ -1,6 +1,6 @@
 body {
-    padding-top: 50px;
     padding-bottom: 20px;
+    font-family: Microsoft SANS-SERIF
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -47,6 +47,22 @@ input[type="checkbox"].input-validation-error {
 
 .col{
     min-height: 50px;
-    border: 1px solid;
+    max-width: 150px;
+    min-width: 75px;
+    border: 1px solid #000f;
 
+}
+
+.login_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+}
+
+.table {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

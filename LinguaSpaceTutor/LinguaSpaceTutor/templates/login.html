@@ -1,0 +1,38 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<div class="content">
+    <div class="login_form">
+        <img src="/static/content/pic/logo.png" style="max-width:250px"/>
+        <form action="" method="post" style="margin-top:50px">
+            {{form.hidden_tag()}}
+            <p>{{form.login.label()}} <p> {{form.login(class_="form-control")}}</p>
+            {% if tp =='login' %}
+            <p>{{form.pswd.label()}} <p> {{form.pswd(class_="form-control")}}</p>
+            <p>{{form.remember.label()}}{{form.remember(style="margin-left:15px")}}</p>
+            <p>{{form.submit(class="btn btn-primary rounded-pill px-3")}}</p>
+        </form>
+        <p></p>
+        <div>
+            <a href="/registr">Зареєструватись</a>
+        </div>
+
+        {% endif %}
+        {% if tp == 'registr' %}
+        <p>{{form.email.label()}} <p> {{form.email(class_="form-control")}}</p>
+        <p>{{form.lastname.label()}} <p> {{form.lastname(class_="form-control")}}</p>
+        <p>{{form.pswd.label()}} <p> {{form.pswd(class_="form-control")}}</p>
+        <p>{{form.pswd2.label()}}<p>{{form.pswd2(class_="form-control")}}</p>
+        <p>{{form.submit(class="btn btn-primary rounded-pill px-3")}}</p>
+        </form>
+        <div>
+            <a href="/login">Увійти</a>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+
+
+
+{% endblock %}
